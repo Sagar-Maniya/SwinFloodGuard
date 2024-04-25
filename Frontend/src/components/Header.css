@@ -1,0 +1,67 @@
+.site-header {
+  background-color: #fff; /* White background */
+  border-bottom: 1px solid #eaeaea; /* Light grey border at the bottom */
+  padding: 1em; /* Padding around the content */
+}
+
+.site-header nav {
+  display: flex;
+  justify-content: space-between; /* Space out logo and navigation items */
+  align-items: center; /* Center items vertically */
+  max-width: 1200px; /* Maximum width of the nav bar */
+  margin: 0 auto; /* Center the nav bar horizontally */
+  padding: 0 1em; /* Padding on the sides */
+}
+
+.logo {
+  font-size: 1.5em; /* Larger font size for the logo */
+  font-weight: bold; /* Make the logo font bold */
+  color: #004466; /* Dark blue color for the logo text */
+}
+
+ul {
+  list-style: none; /* Remove default list styles */
+  display: flex; /* Display the list items in a row */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+li {
+  margin-left: 2em; /* Space out the list items */
+  padding: 0.5em 0; /* Padding for clickable area */
+}
+
+li:first-child {
+  margin-left: 0; /* No left margin for the first item */
+}
+
+li a {
+  text-decoration: none; /* No underlines on links */
+  color: #333; /* Dark grey color for link text */
+  font-size: 1em; /* Set font size for links */
+  transition: color 0.3s ease; /* Smooth transition for link colors */
+}
+
+li a:hover {
+  color: #0077cc; /* Change color on hover */
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens */
+  .site-header nav {
+    flex-direction: column; /* Stack logo and navigation items */
+  }
+
+  .logo {
+    margin-bottom: 1em; /* Space between logo and navigation items */
+  }
+
+  ul {
+    flex-direction: column; /* Stack the list items */
+    align-items: center; /* Center the list items */
+  }
+
+  li {
+    margin: 0.5em 0; /* Space between list items */
+  }
+}
