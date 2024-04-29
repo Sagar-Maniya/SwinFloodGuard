@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage';
 const articlesData = [
   {
     title:
-      'Rising Seas Will Tighten Vise on Miami Even for People Who Are Not Flooded',
+      'Rising Seas Will Tighten Vise on Miami Even for People Who Are Not Flood',
     imageUrl:
       'https://images.pexels.com/photos/19749836/pexels-photo-19749836.jpeg', // Aerial view of flood
     subArticles: [
