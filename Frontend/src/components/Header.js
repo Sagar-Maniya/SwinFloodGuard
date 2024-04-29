@@ -12,18 +12,23 @@ function Header() {
         <div className='logo'>SWINFLOODGUARD</div>
         <ul>
           <li>
-            <NavLink exact to='/' activeClassName='active'>
+            <NavLink exact='true' to='/' activeclassname='active'>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/news' activeClassName='active'>
+            <NavLink to='/news' activeclassname='active'>
               News
             </NavLink>
           </li>
           <li>
-            <NavLink to='/faq' activeClassName='active'>
+            <NavLink to='/faq' activeclassname='active'>
               FAQ
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/evacuation-points' activeclassname='active'>
+              Evacuation Points
             </NavLink>
           </li>
         </ul>
