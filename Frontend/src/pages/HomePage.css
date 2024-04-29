@@ -1,0 +1,40 @@
+/* HomePage.css */
+.home-page {
+  width: 90%;
+  max-width: 1200px;
+  min-width: 320px; /* Minimum width to ensure responsiveness */
+  margin: 40px auto;
+  padding: 20px 0; /* Added padding for better spacing */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  min-height: 100vh; /* Minimum height set to full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+}
+
+.home-page h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.home-page p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.links a {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.links a:hover {
+  background-color: #0056b3;
+}

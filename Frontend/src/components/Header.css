@@ -65,3 +65,7 @@ li a:hover {
     margin: 0.5em 0; /* Space between list items */
   }
 }
+
+.active {
+  color: #0077cc; /* Active link color */
+}

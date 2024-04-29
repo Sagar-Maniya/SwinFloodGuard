@@ -1,14 +1,10 @@
 import React from 'react';
-import './App.css';
-
-// Import your components here
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import NewsArticle from './components/NewsArticle';
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
-
 import NewsPage from './components/NewsPage';
-
+import Footer from './components/Footer';
+import FAQPage from './pages/FAQPage';
+import HomePage from './pages/HomePage';
 const articlesData = [
   {
     title:
@@ -65,18 +61,29 @@ const articlesData = [
     ],
   },
 ];
-
 function App() {
   return (
-    <div className='App'>
-      <Header />
-      <div className='main-content'>
-        <section className='news-section'>
-          <NewsPage articles={articlesData} />
-        </section>
+    <Router>
+      <div className='App'>
+        <Header />
+        <div className='main-content'>
+          <Routes>
+            {' '}
+            <Route
+              path='/news'
+              element={
+                <section className='news-section'>
+                  <NewsPage articles={articlesData} />
+                </section>
+              }
+            />
+            <Route path='/' element={<HomePage />} />
+            <Route path='/faq' element={<FAQPage />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 }
 
