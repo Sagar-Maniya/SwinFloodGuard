@@ -31,6 +31,11 @@ function Header() {
               Evacuation Points
             </NavLink>
           </li>
+          <li>
+            <NavLink to='/login' activeclassname='active'>
+              Login
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
