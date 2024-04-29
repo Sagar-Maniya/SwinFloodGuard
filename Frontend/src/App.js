@@ -5,6 +5,7 @@ import NewsPage from './components/NewsPage';
 import Footer from './components/Footer';
 import FAQPage from './pages/FAQPage';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 const articlesData = [
   {
     title:
@@ -79,6 +80,7 @@ function App() {
             />
             <Route path='/' element={<HomePage />} />
             <Route path='/faq' element={<FAQPage />} />
+            <Route path='/about' element={<AboutPage />} />
           </Routes>
         </div>
         <Footer />

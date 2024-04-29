@@ -1,27 +1,23 @@
-/* Footer.css */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-body {
+/* AboutPage.css */
+.App {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  position: relative; /* Ensure footer is positioned relative to this container */
 }
 
-.site-footer {
-  margin-top: auto; /* Push the footer to the bottom of the flex container */
-  background-color: #333; /* Dark background for the footer */
-  color: white; /* Light text color for contrast */
-  text-align: center; /* Center-align the text */
-  padding: 1em 0; /* Padding on top and bottom */
-  font-size: 1em; /* Footer text size */
+.content-container {
+  flex: 1; /* Takes up remaining space */
 }
 
-@media (max-width: 768px) {
-  .site-footer {
-    padding: 0.5em 0; /* Smaller padding on mobile */
-  }
+.footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1; /* Ensure footer appears above other elements */
 }
