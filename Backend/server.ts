@@ -3,6 +3,7 @@ import db from "./models";
 import userRouter from "./routes/user.route";
 import adminRouter from "./routes/admin.route";
 import floodRouter from "./routes/flood.route";
+import evacuationRouter from "./routes/evacuation.route";
 
 import cors = require("cors");
 //if you want in every domain then
@@ -28,6 +29,7 @@ app.use(urlencoded({ extended: true }));
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/flood", floodRouter)
+app.use("/evacuation-point", evacuationRouter)
 
 // simple route
 app.get("/", (req, res) => {

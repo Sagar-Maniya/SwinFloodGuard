@@ -76,12 +76,12 @@ export const getFloodData: RequestHandler = async (
 };
 
 const getFloodProbability = (discharge: number): number => {
-    if (discharge < 300) {
+    if (discharge < 800) {
         return 0
     }
 
-    if (discharge < 500) {
-        return (discharge - 300) * 99 / 200
+    if (discharge < 1200) {
+        return (discharge - 800) * 99 / 400
     }
 
     return 100

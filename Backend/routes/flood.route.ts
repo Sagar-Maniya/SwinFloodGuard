@@ -1,5 +1,7 @@
 import { Router } from "express";
 import {
+    DEFAULT_LATITUDE,
+    DEFAULT_LONGITUDE,
     getFloodData
 } from "../controller/flood.controller";
 import { checkExact, checkSchema } from "express-validator";
@@ -10,14 +12,34 @@ import {
 
 const floodQuerySchema: Schema<DefaultSchemaKeys> = {
     latitude: {
-        isLatLong: true,
-        in: ["params"],
+        isFloat: {
+            options: {
+                min: -90,
+                max: 90,
+            },
+        },
+        in: ["query"],
         optional: true,
+        default: {
+            options: {
+                default_value: DEFAULT_LATITUDE,
+            }
+        },
     },
     longitude: {
-        isLatLong: true,
-        in: ["params"],
+        isFloat: {
+            options: {
+                min: -180,
+                max: 180,
+            },
+        },
+        in: ["query"],
         optional: true,
+        default: {
+            options: {
+                default_value: DEFAULT_LONGITUDE,
+            }
+        },
     },
 };
 
