@@ -1,0 +1,17 @@
+{
+    "ignore": [
+        ".git",
+        "node_modules",
+        "dist"
+    ],
+    "watch": [
+        "./controller",
+        "./routes",
+        "./services",
+        "./middleware",
+        "./server.ts",
+        "./models"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+}

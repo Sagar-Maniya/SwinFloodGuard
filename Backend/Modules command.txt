@@ -1,0 +1,5 @@
+nodejs server should be installed 
+express js 
+use 
+npm install 
+npm start

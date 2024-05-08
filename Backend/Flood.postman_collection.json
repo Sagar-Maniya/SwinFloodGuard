@@ -1,0 +1,826 @@
+{
+	"info": {
+		"_postman_id": "7eacbf31-bdd7-458f-a84f-7883131aff45",
+		"name": "Flood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11261514",
+		"_collection_link": "https://dark-shuttle-607869-1.postman.co/workspace/School~99ab88a8-307b-4112-8a36-b963f2b9c089/collection/11261514-7eacbf31-bdd7-458f-a84f-7883131aff45?action=share&source=collection_link&creator=11261514"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"test\",\r\n    \"last_name\":\"test\",\r\n    \"email\":\"test@test.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "RegisterUser",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\":\"test\",\r\n    \"last_name\":\"test\",\r\n    \"email\":\"dhruvitmaniya96@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-4c9+DcvQpBlPZzxpt3F9o0dyJDk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:45:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Register successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "LoginUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test@test.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "LoginUser",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"dhruvitmaniya96@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "212"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d4-bMwxG/o7BJU3/zD+ZQlZsRUGwI0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:46:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successfully.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJSb2xlIjoxLCJpYXQiOjE2ODQ1NjUxNzAsImV4cCI6MTY4NzE1NzE3MH0.6dbG46TcrEuGPVeV5oFUf1YEjh0IsH4l5HAnkFybD2Q\",\n        \"id\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GetUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GetUserById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e7-ibTXGK+3/j+R1fhCj+/V4v8wJ4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:46:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Ok\",\n    \"data\": {\n        \"first_name\": \"test\",\n        \"last_name\": \"test\",\n        \"email\": \"dhruvitmaniya96@gmail.com\",\n        \"phone\": null,\n        \"address\": null,\n        \"date_of_birth\": null,\n        \"gender\": null,\n        \"qualification\": null,\n        \"is_verified\": false,\n        \"is_profile_updated\": false\n    }\n}"
+						},
+						{
+							"name": "GetUserById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e6-vy7lHlSUX/DclCwZ7crP/RQAinY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:46:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Ok\",\n    \"data\": {\n        \"first_name\": \"test\",\n        \"last_name\": \"test\",\n        \"email\": \"dhruvitmaniya96@gmail.com\",\n        \"phone\": null,\n        \"address\": null,\n        \"date_of_birth\": null,\n        \"gender\": null,\n        \"qualification\": null,\n        \"is_verified\": true,\n        \"is_profile_updated\": false\n    }\n}"
+						},
+						{
+							"name": "GetUserById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"108-+4UziblgKL0KNeedF4qqazg92qk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:47:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Ok\",\n    \"data\": {\n        \"first_name\": \"test\",\n        \"last_name\": \"test\",\n        \"email\": \"dhruvitmaniya96@gmail.com\",\n        \"phone\": \"12345678\",\n        \"address\": \"abc\",\n        \"date_of_birth\": \"2001-06-09T00:00:00.000Z\",\n        \"gender\": \"Male\",\n        \"qualification\": \"B.Tech\",\n        \"is_verified\": true,\n        \"is_profile_updated\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"test\",\r\n    \"phone\": \"12345678\",\r\n    \"address\": \"abc\",\r\n    \"date_of_birth\": \"2001-06-09\",\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "UpdateUserById",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"test\",\r\n    \"last_name\": \"test\",\r\n    \"phone\": \"12345678\",\r\n    \"address\": \"abc\",\r\n    \"date_of_birth\": \"2001-06-09\",\r\n    \"gender\": \"Male\",\r\n    \"qualification\": \"B.Tech\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-f6UO0G/1NiNTZBX/Wk3/LpGptLU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:47:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Updated the profile successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "SendOtp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/1/otp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SendOtp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/1/otp",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1",
+										"otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-ULjHSMF09DtX8HxVTr2rU3I88IE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:46:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OTP sent successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "ValidateOtp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"777580\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/1/validateOtp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"validateOtp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ValidateOtp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"otp\": \"756468\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/1/validateOtp",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"1",
+										"validateOtp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-a9naSs1WiKPl87FZLI0j8DuX7Bo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:46:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OTP verified successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"adminToken\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@corpu.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/admin/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@corpu.com\",\r\n    \"password\":\"admin@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cd-etkC/D/2/09v7sr0UtLrY7CMv58\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 20 May 2023 06:47:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successfully.\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjAiLCJSb2xlIjowLCJpYXQiOjE2ODQ1NjUyNTksImV4cCI6MTY4NzE1NzI1OX0.I00uvQbsTHugMo0D4oyyBykUfY0_PNU2Tf2xPNloKw8\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Flood",
+			"item": [
+				{
+					"name": "Get flood predection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/flood?latitude=13.067439&longitude=80.237617",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"flood"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "13.067439"
+								},
+								{
+									"key": "longitude",
+									"value": "80.237617"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "adminToken",
+			"value": ""
+		}
+	]
+}
