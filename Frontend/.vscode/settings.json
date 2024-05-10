@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/6d0a2b66-3a81-4b31-8897-c8a81a34dd67/resourceGroups/Sigma9/providers/Microsoft.Web/sites/swinfloodguard",
+  "appService.deploySubpath": "build"
+}

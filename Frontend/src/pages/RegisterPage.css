@@ -28,8 +28,7 @@
   color: #666;
 }
 
-.register input[type='email'],
-.register input[type='password'] {
+.register input {
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;

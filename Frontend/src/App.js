@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import EvacuationPointsPage from './pages/EvacuationPointsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import User from './pages/user/user';
 const articlesData = [
   {
     title:
@@ -88,6 +89,7 @@ function App() {
             />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
+            {/* <Route path='/user' element={<User />} /> */}
           </Routes>
         </div>
         <Footer />

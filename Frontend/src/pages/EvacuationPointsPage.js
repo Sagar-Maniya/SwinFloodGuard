@@ -40,6 +40,12 @@ const EvacuationPointsPage = () => {
 
   return (
     <div>
+      <script
+        src='AIzaSyDqFmnkyc_2SjujWtJU_MBFz7pfR4Jq930'
+        async
+        defer
+      ></script>
+
       <h1
         style={{
           textAlign: 'center',
