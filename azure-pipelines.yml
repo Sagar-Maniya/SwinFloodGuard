@@ -15,13 +15,6 @@ steps:
       npm install
     displayName: "Install dependencies"
 
-  - task: Cache@2
-    inputs:
-      key: 'npm | "$(Agent.OS)" | package-lock.json'
-      restoreKeys: 'npm | "$(Agent.OS)"'
-      path: $(Build.SourcesDirectory)/Frontend/node_modules
-    displayName: "Cache node_modules"
-
   - script: |
       npm run build
     displayName: "Build project"
