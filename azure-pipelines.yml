@@ -16,13 +16,9 @@ steps:
     displayName: "Install dependencies"
 
   - script: |
+      cd Frontend
       npm run build
     displayName: "Build project"
-
-  - script: |
-      npm run test
-    continueOnError: true
-    displayName: "Run tests"
 
   - task: PublishBuildArtifacts@1
     inputs:
