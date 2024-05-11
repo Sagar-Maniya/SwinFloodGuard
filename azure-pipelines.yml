@@ -19,7 +19,7 @@ steps:
     inputs:
       key: 'npm | "$(Agent.OS)" | package-lock.json'
       restoreKeys: 'npm | "$(Agent.OS)"'
-      path: $(Build.SourcesDirectory)/node_modules
+      path: $(Build.SourcesDirectory)/Frontend/node_modules
     displayName: "Cache node_modules"
 
   - script: |
