@@ -22,14 +22,14 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: "$(Build.ArtifactStagingDirectory)/build"
+      PathtoPublish: "$(Build.SourcesDirectory)/Frontend/build"
       ArtifactName: "build"
       publishLocation: "container"
     displayName: "Publish Build Artifacts"
 
   - task: CopyFiles@2
     inputs:
-      SourceFolder: "$(Build.SourcesDirectory)/build"
+      SourceFolder: "$(Build.SourcesDirectory)/Frontend/build"
       Contents: "**"
       TargetFolder: "$(Build.ArtifactStagingDirectory)/build"
     displayName: "Copy build output to artifacts directory"
