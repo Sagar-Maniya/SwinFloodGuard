@@ -10,8 +10,11 @@ steps:
       versionSpec: "16.x"
     displayName: "Install Node.js"
 
-  - script: npm install
-    displayName: "Install dependencies"
+ - script: 
+    cd Frontend
+    npm install
+  displayName: "Install dependencies"
+
 
   - task: Cache@2
     inputs:
