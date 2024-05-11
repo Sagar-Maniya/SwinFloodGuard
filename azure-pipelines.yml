@@ -10,11 +10,10 @@ steps:
       versionSpec: "16.x"
     displayName: "Install Node.js"
 
- - script: 
-    cd Frontend
-    npm install
-  displayName: "Install dependencies"
-
+  - script: |
+      cd Frontend
+      npm install
+    displayName: "Install dependencies"
 
   - task: Cache@2
     inputs:
@@ -23,10 +22,12 @@ steps:
       path: $(Build.SourcesDirectory)/node_modules
     displayName: "Cache node_modules"
 
-  - script: npm run build
+  - script: |
+      npm run build
     displayName: "Build project"
 
-  - script: npm run test
+  - script: |
+      npm run test
     continueOnError: true
     displayName: "Run tests"
 
