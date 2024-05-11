@@ -157,7 +157,6 @@ router.post("/:id/otp", authorize([RolesEnum.User]), sendOtp);
 
 router.post(
   "/:id/validate-otp",
-  authorize([RolesEnum.User]),
   checkExact(checkSchema(otpSchema)),
   validateOtp
 );
