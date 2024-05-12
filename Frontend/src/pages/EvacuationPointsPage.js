@@ -1,10 +1,11 @@
 import React from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import './EvacuationPointsPage.css'; //
+import Header from '../components/Header';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '90vw',
+  width: '96vw',
   height: '90vh',
 };
 const center = {
@@ -39,40 +40,43 @@ const EvacuationPointsPage = () => {
   }
 
   return (
-    <div>
-      <script
-        src='AIzaSyDqFmnkyc_2SjujWtJU_MBFz7pfR4Jq930'
-        async
-        defer
-      ></script>
+    <>
+      <Header />
+      <div>
+        <script
+          src='AIzaSyDqFmnkyc_2SjujWtJU_MBFz7pfR4Jq930'
+          async
+          defer
+        ></script>
 
-      <h1
-        style={{
-          textAlign: 'center',
-          color: 'white',
-          backgroundColor: 'black',
-          padding: '10px',
-        }}
-      >
-        Evacuation Points
-      </h1>
-
-      <div className='google-map'>
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={10}
-          center={center}
+        <h1
+          style={{
+            textAlign: 'center',
+            color: 'white',
+            backgroundColor: 'black',
+            padding: '10px',
+          }}
         >
-          {evacuationPoints.map((point) => (
-            <Marker
-              key={point.name}
-              position={point.location}
-              label={point.name}
-            />
-          ))}
-        </GoogleMap>
+          Evacuation Points
+        </h1>
+
+        <div className='google-map'>
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={10}
+            center={center}
+          >
+            {evacuationPoints.map((point) => (
+              <Marker
+                key={point.name}
+                position={point.location}
+                label={point.name}
+              />
+            ))}
+          </GoogleMap>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+// import Header from './components/Header';
 import NewsPage from './components/NewsPage';
 import Footer from './components/Footer';
 import FAQPage from './pages/FAQPage';
 import HomePage from './pages/HomePage';
-import EvacuationPointsPage from './pages/EvacuationPointsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import User from './pages/user/user';
+import FloodPredictionPage from './pages/FloodPredictionPage';
+import EvacuationPointsPage from './pages/EvacuationPointsPage';
 const articlesData = [
   {
     title:
@@ -69,7 +69,7 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Header />
+        {/* <Header /> */}
         <div className='main-content'>
           <Routes>
             {' '}
@@ -81,14 +81,22 @@ function App() {
                 </section>
               }
             />
-            <Route path='/' element={<HomePage />} />
-            <Route path='/faq' element={<FAQPage />} />
+            <Route
+              path='/flood-predictions'
+              element={<FloodPredictionPage />}
+            />
             <Route
               path='/evacuation-points'
               element={<EvacuationPointsPage />}
             />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
+            <Route path='/' element={<HomePage />} />
+            <Route path='/faq' element={<FAQPage />} />
+            <Route
+              path='/flood-predictions'
+              element={<FloodPredictionPage />}
+            />
             {/* <Route path='/user' element={<User />} /> */}
           </Routes>
         </div>
