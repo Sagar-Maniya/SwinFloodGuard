@@ -22,6 +22,7 @@ export const registerUser: RequestHandler = async (
 
   let salt = await bcrypt.genSalt(saltRounds);
   let password_hash = await bcrypt.hash(password, salt);
+  let id = 0;
 
   try {
     let user = await User.create({
@@ -30,7 +31,8 @@ export const registerUser: RequestHandler = async (
       email,
       password_hash,
     });
-
+    
+    id = user.id;
     let newOtp = generateOTP();
 
     await OTP.create({ otp: newOtp, userId: user.id });
@@ -66,14 +68,11 @@ export const registerUser: RequestHandler = async (
       return res.status(500).json({ message: "Internal server error." });
     }
   }
-
-  return res.status(200).json({ message: "Register successfully." });
+  
+  return res.status(200).json({ message: id });
 };
 
-export const loginUser: RequestHandler = async (
-  req: Request,
-  res: Response
-) => {
+export const loginUser: RequestHandler = async (req: Request, res: Response) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
     return res.status(401).json({
@@ -83,27 +82,46 @@ export const loginUser: RequestHandler = async (
 
   const { email, password } = req.body;
 
-  const user: User | null = await User.findOne({ where: { email } });
-  if (user == null) {
-    return res.status(401).json({
-      message: "Invalid username/password.",
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid username/password.",
+      });
+    }
+
+    const isPasswordMatch = await bcrypt.compare(password, user.password_hash);
+
+    if (!isPasswordMatch) {
+      return res.status(401).json({
+        message: "Invalid username/password.",
+      });
+    }
+
+    // Generate token
+    const token = generateAccessToken(user.id, RolesEnum.User);
+
+    // Return user data along with token
+    return res.status(200).json({
+      message: "Login successful.",
+      data: {
+        token,
+        user: {
+          id: user.id,
+          email: user.email,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          // Add other user properties you want to expose
+        }
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({
+      message: "An error occurred during login.",
     });
   }
-
-  let matched = await bcrypt.compare(password, user.password_hash);
-
-  if (!matched) {
-    return res.status(401).json({
-      message: "Invalid username/password.",
-    });
-  }
-
-  let token = generateAccessToken(user.id, RolesEnum.User);
-
-  return res.status(200).json({
-    message: "Login successfully.",
-    data: { token: token, id: user.id },
-  });
 };
 
 export const getUserById: RequestHandler = async (
