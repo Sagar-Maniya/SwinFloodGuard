@@ -1,6 +1,8 @@
 // NewsPage.js
 import React from 'react';
 import './NewsPage.css'; // Make sure to create a corresponding CSS file
+import Header from '../../src/components/Header';
+
 
 const NewsPage = ({ articles }) => {
   // Render each main article and its subarticles
@@ -29,7 +31,11 @@ const NewsPage = ({ articles }) => {
     </div>
   ));
 
-  return <div className='news-page'>{renderArticles}</div>;
+  return <>
+    <Header />
+
+    <div className='news-page'>{renderArticles}</div>
+  </>;
 };
 
 export default NewsPage;
