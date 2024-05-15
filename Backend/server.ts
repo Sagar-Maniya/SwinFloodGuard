@@ -8,7 +8,7 @@ import evacuationRouter from './routes/evacuation.route';
 import cors = require('cors');
 //if you want in every domain then
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => {
     console.log('Synced db.');
   })

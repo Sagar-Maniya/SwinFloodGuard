@@ -18,8 +18,39 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (credentials.email === 'admin@swinfloodguard.com') {
+        await handleAdminLogin();
+      } else {
+        const response = await axios.post(
+          'http://localhost:8080/user/login',
+          credentials,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const { token, user } = response.data.data;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('firstName', user.first_name);
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/flood-predictions');
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message || 'Failed to login');
+      } else {
+        alert('The server is not responding. Please try again later.');
+      }
+    }
+  };
+
+  const handleAdminLogin = async () => {
+    try {
       const response = await axios.post(
-        'http://localhost:8080/user/login',
+        'http://localhost:8080/admin/login',
         credentials,
         {
           headers: {
@@ -28,12 +59,11 @@ function LoginPage() {
         }
       );
 
-      const { token, user } = response.data.data;
+      const { token } = response.data.data;
 
       localStorage.setItem('token', token);
-      localStorage.setItem('firstName', user.first_name);
-      localStorage.setItem('isLoggedIn', 'true');
-      navigate('/flood-predictions');
+      localStorage.setItem('isAdmin', 'true');
+      navigate('/AdminDasborad');
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message || 'Failed to login');

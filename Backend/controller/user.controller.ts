@@ -124,15 +124,67 @@ export const loginUser: RequestHandler = async (req: Request, res: Response) => 
   }
 };
 
-export const getUserById: RequestHandler = async (
+export const getAllUsers: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const users = await User.findAll();
+
+    if (users.length === 0) {
+      return res.status(404).json({ message: "No users found" });
+    }
+
+    const formattedUsers = users.map(user => ({
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      date_of_birth: user.date_of_birth?.toISOString().substring(0, 10),
+      gender: user.gender,
+      is_verified: user.is_verified
+    }));
+
+    return res.status(200).json({ message: "Ok", data: formattedUsers });
+  } catch (error) {
+    console.error("Error retrieving users:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const addUser: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
+
+  const { first_name, last_name, email } = req.body;
+  
+  try {
+    let user = await User.create({
+      first_name,
+      last_name,
+      email,
+    });
+  } catch (err: any) {
+    if (err.name === "SequelizeUniqueConstraintError") {
+      return res
+        .status(400)
+        .send({ message: "This email is already being used." });
+    } else {
+      return res.status(500).json({ message: "Internal server error." });
+    }
+  }
+  
+  return res.status(200).json({ message: "User added successfully." });
+};
+
+export const updateUser: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
   const { id } = req.params;
-  if (id !== res.locals.userId && res.locals.role !== RolesEnum.Admin) {
-    return res.sendStatus(403);
-  }
-
   const user = await User.findByPk(id);
 
   if (user === null) {
@@ -143,27 +195,50 @@ export const getUserById: RequestHandler = async (
     first_name,
     last_name,
     email,
-    phone,
-    address,
-    date_of_birth,
-    gender,
-    is_verified,
-  } = user;
+    is_verified
+  } = req.body;
+
+  user.first_name = first_name;
+  user.last_name = last_name;
+  user.email= email;
+  user.is_verified = is_verified;
+  user.save();
 
   return res.status(200).json({
-    message: "Ok",
-    data: {
-      first_name,
-      last_name,
-      email,
-      phone,
-      address,
-      date_of_birth: date_of_birth?.toISOString().substring(0, 10),
-      gender,
-      is_verified,
-    },
+    message: "Updated the profile successfully.",
   });
 };
+
+export const deleteUser: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
+  const { id } = req.params;
+  
+  try {
+    const user = await User.findByPk(id);
+    
+    if (!user) {
+      return res.sendStatus(404);
+    }
+    const otp = await OTP.findOne({ where: { userId: id } });
+
+    if (otp) {
+      await otp.destroy();
+    }
+    
+    await user.destroy();
+
+    return res.status(200).json({
+      message: "User deleted successfully.",
+    });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
 
 export const updateUserById: RequestHandler = async (
   req: Request,

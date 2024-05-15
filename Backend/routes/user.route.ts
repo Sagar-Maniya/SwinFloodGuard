@@ -2,7 +2,10 @@ import { Router } from "express";
 import {
   registerUser,
   loginUser,
-  getUserById,
+  getAllUsers,
+  addUser,
+  updateUser,
+  deleteUser,
   updateUserById,
   sendOtp,
   validateOtp,
@@ -161,7 +164,10 @@ router.post(
   validateOtp
 );
 
-router.get("/:id", authorize([RolesEnum.User, RolesEnum.Admin]), getUserById);
+router.get("/get-all-users", getAllUsers);
+router.post("/add-user", addUser);
+router.post("/:id/update-user", updateUser);
+router.post("/:id/delete-user", deleteUser);
 
 router.put(
   "/:id",
